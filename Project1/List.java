@@ -1,32 +1,47 @@
-package Project1;
+package project1;
 
-public class List {
+public class FoodList {
 
-	public List() {
-		// Default method, will make it 10 itemps when no parameters
-
+	/**
+	 * Default constructor, will set the list threshold to 10 items
+	 */
+	public FoodList() {
+		// TODO
 	}
 
-	public List(int number) {
-		// Set the number of items in the list
+	/**
+	 * Will set the list threshold to max
+	 * @param  max	maximum number of items
+	 */
+	public FoodList(int max) {
+		// TODO
 	}
 
-	private void retainState() {
-		// save to file
+	/**
+	 * Add a food to the list
+	 * @param  food	name of the food to be added
+	 * @param  calories	number of calories of the food
+	 */
+	public void addFood(String food, int calories) {
+		// TODO
 	}
 
-	public void addFood(String foodName, int calories) {
-		// add food and calories to list
-
+	/**
+	 * Gives the size of the list
+	 * @return the size of the list
+	 */
+	public int size() {
+		// TODO
+		return this.list.size();
 	}
 
-	public void sort() {
-		// list food in descending order
-
-	}
-
-	public void viewAndIterate() {
-
+	/**
+	 * Gives the i-th element of the list
+	 * @param  i	the rank of the wanted element
+	 * @return		the corresponding element
+	 */
+	public List get(int i) {
+		// TODO
 	}
 
 }

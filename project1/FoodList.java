@@ -7,6 +7,9 @@ public class FoodList {
 	 */
 	public FoodList() {
 		// TODO
+		LinkedList<String> linkedlist = new LinkedList<String>();
+
+		//determiner comment mettre que 10 dans la liste
 	}
 
 	/**
@@ -15,6 +18,9 @@ public class FoodList {
 	 */
 	public FoodList(int max) {
 		// TODO
+		LinkedList<String> linkedlist = new LinkedList<String>();
+		//comment mettre un chiffre
+
 	}
 
 	/**
@@ -24,6 +30,8 @@ public class FoodList {
 	 */
 	public void addFood(String food, int calories) {
 		// TODO
+		// arraylist.add("String, calorie"); ???
+		
 	}
 
 	/**
@@ -42,6 +50,13 @@ public class FoodList {
 	 */
 	public List get(int i) {
 		// TODO
+		// get ?
 	}
-
+		
+	private retainState{
+		
+		//create new file, delete the file et recreate le new file???
+		
+	}
+	
 }

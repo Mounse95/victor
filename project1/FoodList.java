@@ -9,11 +9,13 @@ import java.util.ArrayList;
 public class FoodList {
 
 	private ArrayList<Food> list;
-
+	private int max;
+	
 	/**
 	 * Default constructor, will set the list threshold to 10 items
 	 */
 	public FoodList() {
+		this.max = 10;
 		this.list = new ArrayList<Food>();
 	}
 
@@ -22,7 +24,8 @@ public class FoodList {
 	 * @param  max	maximum number of items
 	 */
 	public FoodList(int max) {
-		this.list = new ArrayList<Food>(max);
+		this.max = max;
+		this.list = new ArrayList<Food>(this.max);
 	}
 
 	/**
@@ -32,15 +35,23 @@ public class FoodList {
 	 * @throws IOException 
 	 */
 	public void addFood(String food, int calories) throws IOException {
-		for (int i = 0 ; i < this.list.size() ; i++) {
-			if (calories > this.list.get(i).getCalories()) {
-				Food f = new Food(food, calories);
-				this.list.add(i, f);
-				this.list.remove(this.list.size() - 1);
-				this.retainState();
-				break;
+		Food f = new Food(food, calories);
+		
+		if (this.list.size() == 0) {
+			this.list.add(f);
+		} else {
+			for (int i = 0 ; i < this.list.size() ; i++) {
+				if (calories >= this.list.get(i).getCalories()) {
+					if (this.list.size() == max) {						
+						this.list.remove(this.list.size() - 1);
+					}
+					this.list.add(i, f);
+					break;
+				}
 			}
 		}
+		
+		this.retainState();
 	}
 
 	/**
@@ -67,10 +78,11 @@ public class FoodList {
 
 		FileWriter fw = new FileWriter(f);
 		for (int i = 0 ; i < this.list.size() ; i++) {
-			fw.write(this.list.get(i).getName());
-			fw.write(this.list.get(i).getCalories());
-			fw.close();
+			fw.write(this.list.get(i).getName() + " ");
+			String c = this.list.get(i).getCalories() + "\n";
+			fw.write(c);
 		}
+		fw.close();
 	}
 
 }

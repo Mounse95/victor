@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class TestFoodList {
 
-	public static int main() throws IOException{
+	public static void main(String[] args) throws IOException{
 		FoodList f = new FoodList();
 
 		// petit test de size
@@ -21,7 +21,5 @@ public class TestFoodList {
 		} else {
 			//ko
 		}
-
-		return 0;
 	}
 }

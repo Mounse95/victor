@@ -1,5 +1,11 @@
 package project1;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
+
 public class FoodList {
 
 	private ArrayList<Food> list;
@@ -23,8 +29,9 @@ public class FoodList {
 	 * Add a food to the list
 	 * @param  food	name of the food to be added
 	 * @param  calories	number of calories of the food
+	 * @throws IOException 
 	 */
-	public void addFood(String food, int calories) {
+	public void addFood(String food, int calories) throws IOException {
 		for (int i = 0 ; i < this.list.size() ; i++) {
 			if (calories > this.list.get(i).getCalories()) {
 				Food f = new Food(food, calories);
@@ -53,7 +60,7 @@ public class FoodList {
 		return this.list.get(i);
 	}
 
-	private retainState() {
+	private void retainState() throws IOException {
 		File f = new File("last_FoodList_state.log");
 		f.delete();
 		f.createNewFile();
@@ -62,6 +69,7 @@ public class FoodList {
 		for (int i = 0 ; i < this.list.size() ; i++) {
 			fw.write(this.list.get(i).getName());
 			fw.write(this.list.get(i).getCalories());
+			fw.close();
 		}
 	}
 

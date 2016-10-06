@@ -2,14 +2,13 @@ package project1;
 
 public class FoodList {
 
+	private ArrayList<Food> list;
+
 	/**
 	 * Default constructor, will set the list threshold to 10 items
 	 */
 	public FoodList() {
-		// TODO
-		LinkedList<String> linkedlist = new LinkedList<String>();
-
-		//determiner comment mettre que 10 dans la liste
+		this.list = new ArrayList<Food>();
 	}
 
 	/**
@@ -17,10 +16,7 @@ public class FoodList {
 	 * @param  max	maximum number of items
 	 */
 	public FoodList(int max) {
-		// TODO
-		LinkedList<String> linkedlist = new LinkedList<String>();
-		//comment mettre un chiffre
-
+		this.list = new ArrayList<Food>(max);
 	}
 
 	/**
@@ -29,9 +25,15 @@ public class FoodList {
 	 * @param  calories	number of calories of the food
 	 */
 	public void addFood(String food, int calories) {
-		// TODO
-		// arraylist.add("String, calorie"); ???
-		
+		for (int i = 0 ; i < this.list.size() ; i++) {
+			if (calories > this.list.get(i).getCalories()) {
+				Food f = new Food(food, calories);
+				this.list.add(i, f);
+				this.list.remove(this.list.size() - 1);
+				this.retainState();
+				break;
+			}
+		}
 	}
 
 	/**
@@ -39,7 +41,6 @@ public class FoodList {
 	 * @return the size of the list
 	 */
 	public int size() {
-		// TODO
 		return this.list.size();
 	}
 
@@ -48,15 +49,20 @@ public class FoodList {
 	 * @param  i	the rank of the wanted element
 	 * @return		the corresponding element
 	 */
-	public List get(int i) {
-		// TODO
-		// get ?
+	public Food get(int i) {
+		return this.list.get(i);
 	}
-		
-	private retainState{
-		
-		//create new file, delete the file et recreate le new file???
-		
+
+	private retainState() {
+		File f = new File("last_FoodList_state.log");
+		f.delete();
+		f.createNewFile();
+
+		FileWriter fw = new FileWriter(f);
+		for (int i = 0 ; i < this.list.size() ; i++) {
+			fw.write(this.list.get(i).getName());
+			fw.write(this.list.get(i).getCalories());
+		}
 	}
-	
+
 }
